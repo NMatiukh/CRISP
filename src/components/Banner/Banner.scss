@@ -1,0 +1,69 @@
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #F6F8FC;
+  margin-bottom: 20px;
+}
+
+.banner-container {
+  background: linear-gradient(90deg, #F6F8FC 0%, #F6F8FC 44.79%, #F5F7FA 74.48%, rgba(243, 239, 238, 0.00) 100%);
+  width: 70%;
+  z-index: 3;
+  position: relative; /* Додайте позиціонування */
+  left: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  //padding-bottom: 20px;
+  box-sizing: border-box;
+
+  h2 {
+    color: #000;
+    font-family: Oswald;
+    font-size: 2.7em;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #000;
+    font-family: Roboto;
+    font-size: 1.3em;
+    line-height: 1.7em;
+  }
+
+  button {
+    margin-top: 15px;
+    border: 2px solid #000;
+    display: flex;
+    width: 8em;
+    height: 2.7em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    cursor: pointer;
+    color: #000;
+    /* Oswald Medium 18 AA */
+    font-family: Oswald;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+}
+
+.banner-img {
+  z-index: 1; /* Змініть з-index на від'ємне значення */
+  position: relative; /* Додайте позиціонування */
+  width: 50%;
+}
+
+.banner-container-border {
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  position: relative;
+  z-index: 1;
+  width: 27em;
+  height: 60px;
+  left: 8%;
+  top: 50px;
+}

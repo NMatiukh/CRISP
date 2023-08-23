@@ -1,0 +1,135 @@
+.app {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.app_header {
+  width: 100%;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.app_container {
+  padding: 20px;
+}
+
+.app-header-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-header-menu {
+  min-width: 30%;
+}
+
+.ant-menu-light.ant-menu-horizontal > .ant-menu-item-selected::after {
+  border-bottom-color: #EB5757;
+  margin-bottom: 10px;
+}
+
+.ant-menu-light.ant-menu-horizontal > .ant-menu-item-active::after {
+  border-bottom-color: #EB5757 !important;
+  margin-bottom: 10px;
+}
+
+.ant-menu-item::after {
+  margin-bottom: 10px !important;
+}
+
+
+.app-header-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.app-header-search > p {
+  margin-left: 5px;
+}
+
+.app-header-links > a {
+  margin-right: 10px;
+  color: #FFFFFF;
+}
+
+.app-header-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-footer {
+  background-color: #000000;
+  color: #FFFFFF;
+
+  h5 {
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+  }
+
+  li {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #828282;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: #828282;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      svg {
+        margin-right: 20px;
+        font-size: 21px;
+      }
+    }
+
+    input {
+      background-color: #000000;
+      color: #FFFFFF;
+
+      &::placeholder {
+        color: #FFFFFF;
+      }
+    }
+
+    button {
+      span {
+        color: #000000;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  span {
+    color: #FFFFFF;
+    margin-bottom: 5px;
+  }
+}
+
+.pre-footer {
+  background-color: #E6F1FA;
+  color: #000000;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  svg{
+
+  }
+}

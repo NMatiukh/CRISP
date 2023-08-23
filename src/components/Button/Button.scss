@@ -1,0 +1,102 @@
+.button {
+  display: flex;
+  width: 114px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--gray-1, #828282);
+  border: 2px solid var(--divider, #C4C4C4);
+  background: var(--light-blue-hover, #F0F2F2);
+  text-align: center;
+  /* Oswald Medium 14 */
+  font-family: Oswald;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button-primary {
+  border: 0;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  flex-shrink: 0;
+  background: var(--black, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  text-align: center;
+
+  /* Oswald Medium 14 */
+  font-family: Oswald;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.button-icon {
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  width: 150px;
+  height: 50px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--black-2, #3F3F3F);
+  text-align: center;
+  border: 2px solid var(--divider, #C4C4C4);
+  /* Oswald Medium 14 */
+  font-family: Oswald;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: var(--white, #FFF);
+
+}
+
+.button:hover {
+  border: 2px solid var(--gray-1, #828282);
+  background: var(--light-blue-hover, #F0F2F2);
+  display: flex;
+  width: 114px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--gray-1, #828282);
+  text-align: center;
+
+  /* Oswald Medium 14 */
+  font-family: Oswald;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.button-primary:hover {
+  background: var(--main-color-2, #EB5757);
+}
+
+.button-icon:hover {
+  border: 2px solid var(--gray-1, #828282);
+  background: var(--white, #FFF);
+}

@@ -1,0 +1,28 @@
+.color-box {
+  width: 27px;
+  height: 27px;
+  box-sizing: border-box;
+  padding: 4px;
+  &:hover {
+    border: 1px solid var(--divider, #C4C4C4);
+    background: #FFF;
+    padding: 4px;
+  }
+}
+
+.color-box-item {
+  width: 17px;
+  height: 17px;
+}
+
+.color-box-active {
+  padding: 3px;
+  border: 2px solid #000;
+  background: #FFF;
+}
+.color-box-disabled {
+  width: 27px;
+  height: 27px;
+  box-sizing: border-box;
+  padding: 4px;
+}

@@ -1,0 +1,28 @@
+.shop-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.shop-icon-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+
+  p {
+    color: #FFF;
+    font-family: Roboto Medium;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 250% */
+    letter-spacing: 0.12px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    max-height: 20px;
+  }
+}
