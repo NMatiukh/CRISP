@@ -7,6 +7,7 @@ import Blog from "../pages/Blog/Blog";
 import Sale from "../pages/Sale/Sale";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import ProductPage from "../pages/ProductPage/ProductPage";
+import ShoppingCart from "../pages/ShoppingCart/ShoppingCart";
 
 export default createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export default createBrowserRouter([
                 path: 'contact_us',
                 element: <ContactUs/>
             },
+            {
+                path: 'shopping_cart',
+                element: <ShoppingCart/>
+            }
         ]
     },
     {

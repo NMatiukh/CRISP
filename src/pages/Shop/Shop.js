@@ -251,25 +251,10 @@ const Shop = () => {
                                     }
                                 </div>
                             </Row>
-                            {/*<Space wrap>*/}
-                            {/*    {*/}
-                            {/*        showFilterItems.size && sizes.map((value, index) =>*/}
-                            {/*            <SizeBox*/}
-                            {/*                sizeValues={sizeValues}*/}
-                            {/*                onClick={(active) => {*/}
-                            {/*                    if (active) {*/}
-                            {/*                        setSizeValues([...sizeValues, value])*/}
-                            {/*                    } else {*/}
-                            {/*                        setSizeValues(sizeValues.filter(value1 => value1 !== value))*/}
-                            {/*                    }*/}
-                            {/*                }}*/}
-                            {/*                key={index}*/}
-                            {/*            >*/}
-                            {/*                {value}*/}
-                            {/*            </SizeBox>)*/}
-                            {/*    }*/}
-                            {/*</Space>*/}
-                            <SizesContainer sizesState={sizesState} setSizesState={setSizesState}/>
+                            {
+                                showFilterItems.size &&
+                                <SizesContainer sizesState={sizesState} setSizesState={setSizesState}/>
+                            }
                         </Space>
 
                         {/*dress length*/}
@@ -312,24 +297,10 @@ const Shop = () => {
                                     }
                                 </div>
                             </Row>
-                            {/*<Space wrap>*/}
-                            {/*    {*/}
-                            {/*        showFilterItems.color && colors.map((value, index) =>*/}
-                            {/*            <ColorBox*/}
-                            {/*                colorsValues={colorsValues}*/}
-                            {/*                onClick={(active) => {*/}
-                            {/*                    if (active) {*/}
-                            {/*                        setColorsValues([...colorsValues, value])*/}
-                            {/*                    } else {*/}
-                            {/*                        setColorsValues(colorsValues.filter(value1 => value1 !== value))*/}
-                            {/*                    }*/}
-                            {/*                }}*/}
-                            {/*                key={index}*/}
-                            {/*                color={value}*/}
-                            {/*            />)*/}
-                            {/*    }*/}
-                            {/*</Space>*/}
-                            <ColorsContainer colorValues={colorsValues} setColorValues={setColorsValues}/>
+                            {
+                                showFilterItems.color &&
+                                <ColorsContainer colorValues={colorsValues} setColorValues={setColorsValues}/>
+                            }
                         </Space>
 
                         {/*range*/}

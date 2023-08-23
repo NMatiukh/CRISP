@@ -17,6 +17,7 @@ import Logo from './assets/Logo.svg'
 import {BiSearch} from "react-icons/bi";
 import ShopIcon from "./components/ShopIcon/ShopIcon";
 import {BsCheck2} from "react-icons/bs";
+import {AiOutlineHeart} from "react-icons/ai";
 
 const App = () => {
     const dispatch = useDispatch()
@@ -57,7 +58,13 @@ const App = () => {
                     <Link className={'app-header-link'} to={'/home'}>
                         <img src={Logo} alt="logo"/>
                     </Link>
-                    <Menu className={'app-header-menu'} mode={'horizontal'} items={menuItems}/>
+                    <Menu
+                        className={'app-header-menu'}
+                        mode={'horizontal'}
+                        items={menuItems}
+                        defaultSelectedKeys={[location.pathname.split('/')[1]]}
+                        selectedKeys={location.pathname.split('/')[1]}
+                    />
                     <div className={'app-header-search'}>
                         <BiSearch/>
                         <p>
@@ -73,8 +80,10 @@ const App = () => {
                         </Link>
                     </div>
                     <div className={'app-header-icons'}>
-                        <HeartOutlined/>
-                        <ShopIcon/>
+                        <AiOutlineHeart style={{fontSize: "1.5em"}}/>
+                        <Link to={'shopping_cart'}>
+                            <ShopIcon/>
+                        </Link>
                     </div>
                 </Header>
             </Affix>

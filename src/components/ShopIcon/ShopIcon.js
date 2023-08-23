@@ -1,11 +1,12 @@
 import React from 'react';
 import './ShopIcon.scss';
-import {ShoppingOutlined} from "@ant-design/icons";
+import {HiOutlineShoppingBag} from "react-icons/hi2";
+import {LiaShoppingBagSolid} from "react-icons/lia";
 
 const ShopIcon = ({price}) => {
     return (
         <div className={'shop-icon'}>
-            <ShoppingOutlined/>
+            <LiaShoppingBagSolid/>
             <div className={'shop-icon-content'}>
                 <p>Shopping Cart</p>
                 <p>
