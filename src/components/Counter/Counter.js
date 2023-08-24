@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import './Counter.scss';
 import {Space} from "antd";
 
-const Counter = () => {
-    const [counterValue, setCounterValue] = useState(1);
+const Counter = ({setCounterValue, counterValue}) => {
     const plus = () => {
         setCounterValue(counterValue + 1)
     }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT, GET_PRODUCT, GET_PRODUCTS} from "./types/PRODUCT";
+import {CREATE_SHOPPING_CARD_PRODUCT} from "./types/SHOPPING_CARD_PRODUCT";
 
 const URL = 'https://fake-server-ruby.vercel.app/'
 
@@ -56,4 +57,9 @@ export function axiosRequest(data, namePage, request) {
             }
         }
     }
+}
+
+
+export function addProductToShoppingCard(product, count) {
+    return {type: CREATE_SHOPPING_CARD_PRODUCT, payload: {product: product, count: count}}
 }

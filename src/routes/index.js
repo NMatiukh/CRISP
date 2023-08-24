@@ -41,7 +41,7 @@ export default createBrowserRouter([
             {
                 path: 'shopping_cart',
                 element: <ShoppingCart/>
-            }
+            },
         ]
     },
     {

@@ -13,6 +13,7 @@ import SizesContainer from "../../components/SizesContainer/SizesContainer";
 import ColorsContainer from "../../components/ColorsContainer/ColorsContainer";
 import Banner from "../../components/Banner/Banner";
 import Rectangle71 from '../../assets/Rectangle71.png'
+import {Link} from "react-router-dom";
 
 const Shop = () => {
     const [sliderValue, setSliderValue] = useState(500); // slider values
@@ -362,31 +363,34 @@ const Shop = () => {
                         dataSource={productsWithFilter}
                         renderItem={(value, index) => (
                             <List.Item>
-                                <Card
-                                    className={'shop-card'}
-                                    key={index}
-                                    bordered={false}
-                                    hoverable
-                                    cover={<img alt={value.name}
-                                                src={value.photo}/>}
-                                >
-                                    <Meta title={value.name} description={<Space direction={"vertical"}>
-                                        <Typography.Text type={"secondary"}>
-                                            {value.short_description}
-                                        </Typography.Text>
-                                        <Typography.Text strong level={5}>
-                                            {value.price.toFixed(2)} EUR
-                                        </Typography.Text>
-                                        <Space wrap>
-                                            {
-                                                value.color.map((value, index) =>
-                                                    <ColorBox disabled key={index} color={{value: value}}
-                                                              onClick={() => {
-                                                              }}/>)
-                                            }
-                                        </Space>
-                                    </Space>}/>
-                                </Card>
+                                <Link to={`${value.id}`}>
+                                    <Card
+                                        className={'shop-card'}
+                                        key={index}
+                                        bordered={false}
+                                        hoverable
+                                        cover={<img alt={value.name}
+                                                    src={value.photo}/>}
+                                    >
+                                        <Meta title={value.name} description={<Space direction={"vertical"}>
+                                            <Typography.Text type={"secondary"}>
+                                                {value.short_description}
+                                            </Typography.Text>
+                                            <Typography.Text strong level={5}>
+                                                {value.price.toFixed(2)} EUR
+                                            </Typography.Text>
+                                            <Space wrap>
+                                                {
+                                                    value.color.map((value, index) =>
+                                                        <ColorBox disabled key={index} color={{value: value}}
+                                                                  onClick={() => {
+                                                                  }}/>)
+                                                }
+                                            </Space>
+                                        </Space>}/>
+                                    </Card>
+                                </Link>
+
                             </List.Item>
                         )}
                     />
