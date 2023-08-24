@@ -1,8 +1,8 @@
-.ant-card:not(.ant-card-bordered){
+.ant-card:not(.ant-card-bordered) {
   box-shadow: none;
 }
 
-.shop-filter-box{
+.shop-filter-box {
   border: 1px solid #000;
   background: #FFF;
   width: 100%;
@@ -11,9 +11,22 @@
   gap: 30px 0;
   padding: 28px 23px;
 }
-.shop-filter-box-title{
+
+.shop-filter-box-title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.ant-checkbox-wrapper {
+  span {
+    color: var(--black-2, #3F3F3F);
+    font-family: Roboto;
+    text-transform: uppercase;
+  }
+}
+
+h5 {
+  font-family: Oswald !important;
 }

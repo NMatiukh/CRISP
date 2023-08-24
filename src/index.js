@@ -19,7 +19,6 @@ root.render(
             <RouterProvider router={routes}/>
         </ConfigProvider>
     </Provider>
-
 );
 
 

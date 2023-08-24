@@ -14,6 +14,7 @@ import ColorsContainer from "../../components/ColorsContainer/ColorsContainer";
 import Banner from "../../components/Banner/Banner";
 import Rectangle71 from '../../assets/Rectangle71.png'
 import {Link} from "react-router-dom";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 const Shop = () => {
     const [sliderValue, setSliderValue] = useState(500); // slider values
@@ -319,10 +320,10 @@ const Shop = () => {
                             {
                                 showFilterItems.price_range && <div style={{width: "100%"}}>
                                     <Row justify={"space-between"}>
-                                        <Col>
+                                        <Col style={{fontFamily: "Roboto"}}>
                                             0.00 EUR
                                         </Col>
-                                        <Col>
+                                        <Col style={{fontFamily: "Roboto"}}>
                                             {`${sliderValue.toFixed(2)} EUR`}
                                         </Col>
                                     </Row>
@@ -364,31 +365,7 @@ const Shop = () => {
                         renderItem={(value, index) => (
                             <List.Item>
                                 <Link to={`${value.id}`}>
-                                    <Card
-                                        className={'shop-card'}
-                                        key={index}
-                                        bordered={false}
-                                        hoverable
-                                        cover={<img alt={value.name}
-                                                    src={value.photo}/>}
-                                    >
-                                        <Meta title={value.name} description={<Space direction={"vertical"}>
-                                            <Typography.Text type={"secondary"}>
-                                                {value.short_description}
-                                            </Typography.Text>
-                                            <Typography.Text strong level={5}>
-                                                {value.price.toFixed(2)} EUR
-                                            </Typography.Text>
-                                            <Space wrap>
-                                                {
-                                                    value.color.map((value, index) =>
-                                                        <ColorBox disabled key={index} color={{value: value}}
-                                                                  onClick={() => {
-                                                                  }}/>)
-                                                }
-                                            </Space>
-                                        </Space>}/>
-                                    </Card>
+                                    <ProductCard key={index} value={value} index={index}/>
                                 </Link>
 
                             </List.Item>

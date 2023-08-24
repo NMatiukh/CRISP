@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
-import data from '../../server/data.json'
-import axios from "axios";
-import {Col, Row, Space} from "antd";
+import {Link, useParams} from "react-router-dom";
+import {Col, List, Row, Space} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 
 import './ProductPage.scss'
 import ColorBox from "../../components/ColorBox/ColorBox";
-import SizeBox from "../../components/SizeBox/SizeBox";
 import SizesContainer from "../../components/SizesContainer/SizesContainer";
 import Counter from "../../components/Counter/Counter";
 import Button from "../../components/Button/Button";
 import {HeartOutlined} from "@ant-design/icons";
 import {addProductToShoppingCard} from "../../redux/actions";
 import ProductPagePhoto from "../../components/ProductPagePhoto/ProductPagePhoto";
+import CollapseBox from "../../components/CollapseBox/CollapseBox";
+import ProductCard from "../../components/ProductCard/ProductCard";
 
 const ProductPage = () => {
     const {productId} = useParams();
@@ -21,9 +20,10 @@ const ProductPage = () => {
     const [activeImage, setActiveImage] = useState('');
     const [counterValue, setCounterValue] = useState(1);
     const dispatch = useDispatch();
-
+    const products = useSelector(state => state.products.data)
     const product = useSelector(state => state.products.data?.filter(value => parseInt(value.id) === parseInt(productId))[0])
     useEffect(() => {
+        window.scrollTo(0, 0);
         setActiveImage(`${product?.photo}1?set=set3`)
     }, [product]);
     return (
@@ -39,7 +39,7 @@ const ProductPage = () => {
                             </Col>
                             <Col span={9} className={'product-page-details-properties'}>
                                 <h1 className={'product-page-title'}>
-                                    Women Black Checked Fit and Flare Dress
+                                    {product.name}
                                 </h1>
                                 <Space size={"large"} direction={"vertical"}>
                                     <p className={'product-page-property-name'}>
@@ -54,8 +54,12 @@ const ProductPage = () => {
                                     </Space>
                                 </Space>
                                 <Space size={"large"} direction={"vertical"}>
-                                    <p className={'product-page-property-name'}>
-                                        Select size (Inches) </p>
+                                    <Row justify={"space-between"}>
+                                        <p className={'product-page-property-name'}>
+                                            Select size (Inches) </p>
+                                        <p className={'product-page-property-link'}>Size guide</p>
+                                    </Row>
+
                                     <Space>
                                         <SizesContainer setSizesState={setSizesState} sizesState={sizesState}
                                                         dataProductPage={product.size}/>
@@ -84,8 +88,45 @@ const ProductPage = () => {
                                 </Space>
                             </Col>
                         </Row>
-                    </div>
+                        <Row justify={"center"}>
+                            <Col span={18}>
+                                <CollapseBox title={'Details'}>
 
+                                </CollapseBox>
+                                <CollapseBox title={'Other information'}>
+
+                                </CollapseBox>
+                                <CollapseBox title={'Another tab'}>
+
+                                </CollapseBox>
+                            </Col>
+                        </Row>
+                    </div>
+                    <Row>
+                        <List
+                            position={'top'}
+                            pagination={{
+                                position: 'top',
+                                pageSize: 5,
+                                simple: true,
+                                total: 10,
+                                title: 'test',
+                                showTitle: true
+                            }}
+                            grid={{
+                                gutter: 0,
+                                column: 5,
+                            }}
+                            dataSource={products}
+                            renderItem={(value, index) => (
+                                <List.Item>
+                                    <Link to={`/shop/${value.id}`}>
+                                        <ProductCard key={index} value={value} index={index}/>
+                                    </Link>
+                                </List.Item>
+                            )}
+                        />
+                    </Row>
                 </div>
             }
         </>

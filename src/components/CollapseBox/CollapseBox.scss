@@ -1,0 +1,30 @@
+.collapse-box {
+  width: 100%;
+  background: #F8F9FB;
+  margin: 10px 0;
+  svg {
+    color: #828282;
+  }
+}
+
+.collapse-box-header-title {
+  color: #000;
+  font-family: Oswald;
+  font-size: 2em;
+}
+
+.collapse-box-header {
+  cursor: pointer;
+  padding: 25px 20px;
+  &:hover {
+    background-color: #F0F2F2;
+
+    svg {
+      color: #3F3F3F;
+    }
+  }
+
+}
+.collapse-box-container{
+  padding: 0 20px;
+}
