@@ -104,17 +104,15 @@ const ProductPage = () => {
                     </div>
                     <Row>
                         <List
-                            position={'top'}
+                            style={{width: '100%'}}
                             pagination={{
                                 position: 'top',
                                 pageSize: 5,
                                 simple: true,
                                 total: 10,
-                                title: 'test',
-                                showTitle: true
+                                responsive: true
                             }}
                             grid={{
-                                gutter: 0,
                                 column: 5,
                             }}
                             dataSource={products}
