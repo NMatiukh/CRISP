@@ -2,6 +2,7 @@
   width: 100%;
   background: #F8F9FB;
   margin: 10px 0;
+
   svg {
     color: #828282;
   }
@@ -16,6 +17,7 @@
 .collapse-box-header {
   cursor: pointer;
   padding: 25px 20px;
+
   &:hover {
     background-color: #F0F2F2;
 
@@ -25,6 +27,33 @@
   }
 
 }
-.collapse-box-container{
+
+.collapse-box-container {
   padding: 0 20px;
+}
+
+.collapse-box-container-col {
+  h4 {
+    text-transform: uppercase;
+    color: var(--black, #000);
+    font-family: Oswald;
+    font-size: 14px;
+    margin-bottom: 0.5em;
+  }
+
+  p, li {
+    color: var(--black-2, #3F3F3F);
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  ul {
+    padding-left: 1em;
+  }
+
+  li {
+    line-height: 30px;
+    list-style-type: disc;
+  }
 }

@@ -14,17 +14,33 @@ import ProductPagePhoto from "../../components/ProductPagePhoto/ProductPagePhoto
 import CollapseBox from "../../components/CollapseBox/CollapseBox";
 import ProductCard from "../../components/ProductCard/ProductCard";
 
+
+const description = {
+    about_product: 'Cool off this summer in the Mini Ruffle Smocked Tank Top from our very own LA Hearts. This tank features a smocked body, adjustable straps, scoop neckline, ruffled hems, and a cropped fit.',
+    advantages: [
+        "Smocked body",
+        "Adjustable straps",
+        "Scoop neckline",
+        "Ruffled hems",
+        "Cropped length",
+        " Model is wearing a small",
+        "100% rayon",
+        " Machine washable",
+    ],
+    shipping: 'We offer Free Standard Shipping for all orders over $75 to the 50 states and the District of Columbia. The minimum order value must be $75 before taxes, shipping and handling. Shipping fees are non-refundable.\n Please allow up to 2 business days (excluding weekends, holidays, and sale days) to process your order.\n Processing Time + Shipping Time = Delivery Time'
+}
+
 const ProductPage = () => {
+    const [color, setColor] = useState({});
     const {productId} = useParams();
     const [sizesState, setSizesState] = useState([]);
-    const [activeImage, setActiveImage] = useState('');
     const [counterValue, setCounterValue] = useState(1);
     const dispatch = useDispatch();
-    const products = useSelector(state => state.products.data)
-    const product = useSelector(state => state.products.data?.filter(value => parseInt(value.id) === parseInt(productId))[0])
+    const products = useSelector(state => state.firestore.ordered.products)
+    const product = useSelector(state => state.firestore.ordered.products?.filter(value => parseInt(value.id) === parseInt(productId))[0])
     useEffect(() => {
         window.scrollTo(0, 0);
-        setActiveImage(`${product?.photo}1?set=set3`)
+        setColor({value: product?.colors[0]})
     }, [product]);
     return (
         <>
@@ -34,8 +50,9 @@ const ProductPage = () => {
                     <div className={'product-page-details'}>
                         <Row justify={"center"}>
                             <Col span={9}>
-                                <ProductPagePhoto photo={product.photo} activeImage={activeImage}
-                                                  setActiveImage={setActiveImage}/>
+                                <ProductPagePhoto colors={product.colors} images={product.images}
+                                                  color={color}
+                                                  setColor={setColor}/>
                             </Col>
                             <Col span={9} className={'product-page-details-properties'}>
                                 <h1 className={'product-page-title'}>
@@ -47,9 +64,14 @@ const ProductPage = () => {
                                     </p>
                                     <Space>
                                         {
-                                            product.color.map(value => <ColorBox key={value}
-                                                                                 color={{value: value, active: false}}
-                                                                                 disabled/>)
+                                            product.colors.map((value, index) => <ColorBox oneColor
+                                                                                           setColorValues={setColor}
+                                                                                           colorValues={color}
+                                                                                           key={index}
+                                                                                           color={{
+                                                                                               value: value,
+                                                                                               active: false
+                                                                                           }}/>)
                                         }
                                     </Space>
                                 </Space>
@@ -62,7 +84,7 @@ const ProductPage = () => {
 
                                     <Space>
                                         <SizesContainer setSizesState={setSizesState} sizesState={sizesState}
-                                                        dataProductPage={product.size}/>
+                                                        dataProductPage={product.sizes}/>
                                     </Space>
                                 </Space>
                                 <Space size={"large"} align={"start"}>
@@ -77,28 +99,23 @@ const ProductPage = () => {
                                             price total
                                         </p>
                                         <p className={'product-page-property-price'}>
-                                            {(counterValue * product.price.toFixed(2))} EUR
+                                            {(counterValue * product.price).toFixed(2)} EUR
                                         </p>
                                     </Space>
                                 </Space>
                                 <Space size={"large"}>
-                                    <Button onClick={() => dispatch(addProductToShoppingCard(product, counterValue))}
-                                            type={'primary'}>Add to bag</Button>
+                                    <Button
+                                        onClick={() => dispatch(addProductToShoppingCard(product, counterValue, color.value))}
+                                        type={'primary'}>Add to bag</Button>
                                     <Button type={'icon'} icon={<HeartOutlined/>}>Save</Button>
                                 </Space>
                             </Col>
                         </Row>
                         <Row justify={"center"}>
                             <Col span={18}>
-                                <CollapseBox title={'Details'}>
-
-                                </CollapseBox>
-                                <CollapseBox title={'Other information'}>
-
-                                </CollapseBox>
-                                <CollapseBox title={'Another tab'}>
-
-                                </CollapseBox>
+                                <CollapseBox description={description} title={'Details'}/>
+                                <CollapseBox description={description} title={'Other information'}/>
+                                <CollapseBox description={description} title={'Another tab'}/>
                             </Col>
                         </Row>
                     </div>
@@ -114,6 +131,7 @@ const ProductPage = () => {
                             }}
                             grid={{
                                 column: 5,
+                                gutter: 20
                             }}
                             dataSource={products}
                             renderItem={(value, index) => (

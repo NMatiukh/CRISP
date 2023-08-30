@@ -1,30 +1,29 @@
 import React, {useEffect} from 'react';
-import {Link, Outlet, redirect, useLocation, useNavigate} from "react-router-dom";
+import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {Affix, Button, Col, Divider, FloatButton, Input, Layout, Menu, Row, Space, Typography} from "antd";
 import {Content, Footer, Header} from "antd/es/layout/layout";
 import {
     FacebookFilled,
-    FacebookOutlined,
-    HeartOutlined, InstagramFilled,
-    InstagramOutlined,
-    TwitterOutlined,
+    InstagramFilled,
     TwitterSquareFilled
 } from "@ant-design/icons";
-import "./App.scss"
-import {axiosRequest} from "./redux/actions";
-import {useDispatch} from "react-redux";
+import "./App.scss";
 import Logo from './assets/Logo.svg'
 import {BiSearch} from "react-icons/bi";
 import ShopIcon from "./components/ShopIcon/ShopIcon";
 import {BsCheck2} from "react-icons/bs";
 import {AiOutlineHeart} from "react-icons/ai";
+import {useFirestoreConnect} from "react-redux-firebase";
 
 const App = () => {
-    const dispatch = useDispatch()
     const location = useLocation()
     const navigate = useNavigate()
+
+    useFirestoreConnect(() => [
+        {collection: 'products'}
+    ])
+
     useEffect(() => {
-        dispatch(axiosRequest('', 'products', ''))
         if (location.pathname === '/') {
             navigate('/home')
         }

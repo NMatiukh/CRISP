@@ -32,7 +32,7 @@ const Shop = () => {
         color: true,
         price_range: true,
     });
-    const products = useSelector(state => state.products.data)
+    const products = useSelector(state => state.firestore.ordered.products)
     useEffect(() => {
         setProductsWithFilter(products)
     }, [products]);
@@ -48,11 +48,11 @@ const Shop = () => {
 
             const meetsBrands = brandsValues.length === 0 || brandsValues.includes(product.brand);
 
-            const meetsSizes = sizesState.filter(item => item.active).length === 0 || sizesState.some(size => product.size.some(productSize => size.value === productSize && size.active));
+            const meetsSizes = sizesState.filter(item => item.active).length === 0 || sizesState.some(size => product.sizes.some(productSize => size.value === productSize && size.active));
 
             const meetsDressLengths = dressLengthValues.length === 0 || dressLengthValues.some(length => product.dress_length.includes(length));
 
-            const meetsColors = colorsValues.filter(item => item.active).length === 0 || colorsValues.some(color => product.color.some(productColor => color.value === productColor && color.active));
+            const meetsColors = colorsValues.filter(item => item.active).length === 0 || colorsValues.some(color => product.colors.some(productColor => color.value === productColor && color.active));
 
 
             return meetsSliderValue && meetsBrands && meetsSizes && meetsDressLengths && meetsColors;
@@ -352,6 +352,7 @@ const Shop = () => {
                     <Divider type={"vertical"} style={{height: "100%", margin: '0 30px'}}/>
                     <List
                         position={'top'}
+                        style={{width: '100%'}}
                         pagination={{
                             position: 'top',
                             defaultPageSize: 12,

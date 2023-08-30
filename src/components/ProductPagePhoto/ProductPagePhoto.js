@@ -1,28 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './ProductPagePhoto.scss';
 import {Col, Image, Row} from "antd";
 
-const ProductPagePhoto = ({photo, setActiveImage, activeImage}) => {
+const ProductPagePhoto = ({colors, images, setColor, color}) => {
+
     return (
         <Row>
             <Col span={4}>
                 <div className={'product-page-photo'}>
-                    <img className={activeImage === `${photo}1?set=set3` ? 'product-page-photo-active' : ''}
-                         onClick={() => {
-                             setActiveImage(`${photo}1?set=set3`)
-                         }} src={`${photo}1?set=set3`} alt=""/>
-                    <img className={activeImage === `${photo}2?set=set3` ? 'product-page-photo-active' : ''}
-                         onClick={() => {
-                             setActiveImage(`${photo}2?set=set3`)
-                         }} src={`${photo}2?set=set3`} alt=""/>
-                    <img className={activeImage === `${photo}3?set=set3` ? 'product-page-photo-active' : ''}
-                         onClick={() => {
-                             setActiveImage(`${photo}3?set=set3`)
-                         }} src={`${photo}3?set=set3`} alt=""/>
+                    {
+                        colors.map((item, index) =>
+                            <img key={index} className={color.value === item ? 'product-page-photo-active' : ''}
+                                 onClick={() => {
+                                     setColor({...color, value: item})
+                                 }} src={images[item]} alt=""/>
+                        )
+                    }
                 </div>
             </Col>
             <Col span={20} className={'product-page-photo-main'}>
-                <img src={activeImage} alt=""/>
+                <img src={images[color.value]} alt=""/>
             </Col>
         </Row>
     );

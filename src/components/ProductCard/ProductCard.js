@@ -1,17 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductCard.scss';
 import Meta from "antd/es/card/Meta";
 import {Card, Space, Typography} from "antd";
 import ColorBox from "../ColorBox/ColorBox";
 
 const ProductCard = ({value, index}) => {
+    const [color, setColor] = useState({});
+    useEffect(() => {
+        setColor({value: value.colors[0], active: true})
+    }, [value]);
     return (
         <Card
             className={'product-card'}
             bordered={false}
             hoverable
-            cover={<img alt={value.name}
-                        src={value.photo}/>}
+            cover={
+                <img
+                    alt={value.name}
+                    src={value.images[color.value]}
+                />
+            }
         >
             <Meta title={value.name} description={<Space direction={"vertical"}>
                 <Typography.Text type={"secondary"}>
@@ -22,10 +30,9 @@ const ProductCard = ({value, index}) => {
                 </Typography.Text>
                 <Space wrap>
                     {
-                        value.color.map((value, index) =>
-                            <ColorBox disabled key={index} color={{value: value}}
-                                      onClick={() => {
-                                      }}/>)
+                        value.colors.map((value, index) =>
+                            <ColorBox oneColor setColorValues={setColor} colorValues={color} key={index}
+                                      color={{value: value, active: false}}/>)
                     }
                 </Space>
             </Space>}/>
