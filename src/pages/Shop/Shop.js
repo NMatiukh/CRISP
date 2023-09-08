@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Shop.scss';
 import {Card, Checkbox, Col, Divider, List, Row, Select, Slider, Space, Typography} from "antd";
 import {brands, colors, dressLength, sizes} from "../../structures";
@@ -24,7 +24,7 @@ const Shop = () => {
     const [productsWithFilter, setProductsWithFilter] = useState([]); // array products with filters
     const [sizesState, setSizesState] = useState([]); // sizes values
     const [showFiltersDetails, setShowFiltersDetails] = useState(false); // filter details box on top visible
-
+    const scrollToRef = useRef();
     const [showFilterItems, setShowFilterItems] = useState({
         brand: true,
         size: true,
@@ -48,12 +48,11 @@ const Shop = () => {
 
             const meetsBrands = brandsValues.length === 0 || brandsValues.includes(product.brand);
 
-            const meetsSizes = sizesState.filter(item => item.active).length === 0 || sizesState.some(size => product.sizes.some(productSize => size.value === productSize && size.active));
+            const meetsSizes = sizesState.length === 0 || sizesState.some(size => product.sizes.includes(size));
 
             const meetsDressLengths = dressLengthValues.length === 0 || dressLengthValues.some(length => product.dress_length.includes(length));
 
             const meetsColors = colorsValues.filter(item => item.active).length === 0 || colorsValues.some(color => product.colors.some(productColor => color.value === productColor && color.active));
-
 
             return meetsSliderValue && meetsBrands && meetsSizes && meetsDressLengths && meetsColors;
         });
@@ -255,7 +254,10 @@ const Shop = () => {
                             </Row>
                             {
                                 showFilterItems.size &&
-                                <SizesContainer sizesState={sizesState} setSizesState={setSizesState}/>
+                                <SizesContainer
+                                    selectedSizes={sizesState}
+                                    setSelectedSizes={setSizesState}
+                                />
                             }
                         </Space>
 
@@ -333,7 +335,10 @@ const Shop = () => {
 
                         </Space>
                         <Row justify={"end"}>
-                            <Button onClick={applyFilter}>Apply</Button>
+                            <Button onClick={() => {
+                                applyFilter();
+                                window.scrollTo(0, 400)
+                            }}>Apply</Button>
                         </Row>
                     </Space>
 

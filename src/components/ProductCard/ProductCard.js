@@ -9,15 +9,17 @@ const ProductCard = ({value, index}) => {
     useEffect(() => {
         setColor({value: value.colors[0], active: true})
     }, [value]);
+
     return (
         <Card
             className={'product-card'}
             bordered={false}
             hoverable
             cover={
+                value.images[color.value]?.length &&
                 <img
                     alt={value.name}
-                    src={value.images[color.value]}
+                    src={value.images[color.value][0]}
                 />
             }
         >
